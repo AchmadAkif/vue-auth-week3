@@ -27,6 +27,8 @@
           title: "Login Successful",
           text: "Welcome back!",
         });
+      auth.login(username.value)
+      router.push('/')
     }
 
     if (response.data.msg === "Username and Password cannot be empty") {

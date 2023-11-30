@@ -10,6 +10,10 @@
     auth.logout()
     router.push('/login')
   }
+
+  const showAlert = () => {
+    alert("You have to be logged in to access this page!");
+  }
 </script>
 
 <template>
@@ -19,7 +23,8 @@
       <div class="flex space-x-5">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/restricted">Restricted Page</RouterLink>
+        <RouterLink v-if="auth.username" to="/restricted">Restricted Page</RouterLink>
+        <p class="cursor-pointer" v-else @click="showAlert()">Restricted Page</p>
       </div>
       <div class="flex space-x-5 items-center">
         <p v-if="auth.username" class="text-[#41B883]">Hi, {{ auth.username }}</p>
